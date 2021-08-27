@@ -19,7 +19,17 @@ export function Home() {
   }
 
   function handleToggleTaskDone(id: number) {
-    //TODO - toggle task done if exists
+    const toggleTask = (task: Task) => {
+      const isToggledTask = task.id === id;
+
+      if (isToggledTask) {
+       return Object.assign({}, task, { done: !task.done })
+      }
+    
+      return task;
+  };
+
+    setTasks(previousTasks => previousTasks.map(toggleTask));
   }
 
   function handleRemoveTask(id: number) {
